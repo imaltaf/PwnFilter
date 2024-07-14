@@ -3,7 +3,7 @@ import FileUpload from '../components/FileUpload';
 import { parseFileContent } from '../utils/parseFile';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FiCopy, FiX } from 'react-icons/fi'; // Import FiCopy and FiX icons
-import { BackgroundBeams } from '../components/ui/background-beams';
+
 
 const Dashboard = () => {
   const [tableData, setTableData] = useState(null);
@@ -64,16 +64,16 @@ const Dashboard = () => {
   }, [filters, tableData]);
 
   return (
-    <div className="min-h-screen dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-customColor1 dark:bg-dot-white/[0.2] bg-dot-white/[0.2] relative flex flex-col items-center justify-center p-4">
       {!tableData && <FileUpload onFileUpload={handleFileUpload} />}
       {tableData && (
         <>
-          <div className="mb-4 w-full max-w-7xl flex flex-wrap justify-center">
+          <div className="mb-4 w-full  max-w-7xl flex flex-wrap justify-center">
             {Object.keys(filters).map((key) => (
-              <form key={key} className="max-w-md mx-2 mb-4">
-                <label
+              <form key={key} className="max-w-md  bg-customColor mx-2 mb-4">
+                <label 
                   htmlFor={key}
-                  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                  className="mb-2 text-sm font-medium bg-customColor1 sr-only dark:text-white"
                 >
                   Search
                 </label>
@@ -85,7 +85,7 @@ const Dashboard = () => {
                     value={filters[key]}
                     onChange={handleFilterChange}
                     placeholder={`Filter by ${key}`}
-                    className="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="block w-full p-4 text-sm text-gray-900 border border-gray-500 rounded-lg bg-customColor focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
                   />
                 </div>
@@ -94,10 +94,10 @@ const Dashboard = () => {
           </div>
           <div className="absolute top-4 right-4">
             {showCounts && (
-              <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg flex items-center justify-between">
+              <div className="p-4 dark:bg-gray-800 rounded-lg shadow-lg flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white">URL Count:</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{countUrlOccurrences()}</p>
+                  <h3 className="text-lg font-semibold text-gray-300 dark:text-white">URL Count:</h3>
+                  <p className="text-gray-300 dark:text-gray-300">{countUrlOccurrences()}</p>
                 </div>
               </div>
             )}
